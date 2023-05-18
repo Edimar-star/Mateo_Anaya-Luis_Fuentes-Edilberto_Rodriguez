@@ -41,7 +41,7 @@ sequential mode, Compress the file
 Unzip the file
 
 ```bash
-  python descompresor.py
+  python descompresor.py comprimido.elmejorprofesor
 ```
 Check if both files are the same
 
@@ -51,14 +51,14 @@ Check if both files are the same
 parallel mode, Compress the file
 
 ```bash
-  mpiexec -n 4 -oversubscribe --allow-run-as-root compressorp.py LaBiblia.txt
+  mpiexec -n 4 -oversubscribe --allow-run-as-root compresorp.py LaBiblia.txt
 ```
 
 
 Unzip the file
 
 ```bash
-    mpiexec -n 4 -oversubscribe --allow-run-as-root descompressorp.py comrprimido.elmejorprofesor
+    mpiexec -n 4 -oversubscribe --allow-run-as-root descompresorp.py comrprimidop.elmejorprofesor
 ```
 
 Check if both files are the same
