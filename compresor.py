@@ -1,4 +1,4 @@
-from huffman import HuffmanNode
+from huffman import HuffmanNode 
 import numpy as np
 import heapq
 import time
@@ -6,6 +6,7 @@ import math
 import sys
 
 def build_frequency_table(text):
+    # Construye una tabla de frecuencias a partir del texto dado
     freq_dict = {}
     for char in text:
         if char in freq_dict:
@@ -15,32 +16,36 @@ def build_frequency_table(text):
     return freq_dict
 
 def build_huffman_tree(freq_dict):
+    # Construye el árbol de Huffman a partir de la tabla de frecuencias dada
     heap = []
     for char, freq in freq_dict.items():
-        node = HuffmanNode(freq, char)
+        node = HuffmanNode(freq, char)  # Crea un nodo Huffman para cada carácter y su frecuencia
         heapq.heappush(heap, node)
 
     while len(heap) > 1:
+        # Combina los nodos del heap hasta que quede solo un nodo raíz
         left = heapq.heappop(heap)
         right = heapq.heappop(heap)
-        parent = HuffmanNode(left.freq + right.freq)
+        parent = HuffmanNode(left.freq + right.freq)  # Crea un nodo padre con la suma de las frecuencias de los hijos
         parent.left, parent.right = left, right
         heapq.heappush(heap, parent)
 
-    return heap[0]
+    return heap[0]  # Devuelve el nodo raíz del árbol de Huffman
 
 def build_codeword_table(root):
+    # Construye una tabla de códigos a partir del árbol de Huffman dado
     codes = {}
     stack = [(root, "")]
     while stack:
         node, code = stack.pop()
         if node.char is not None:
-            codes[node.char] = code
+            codes[node.char] = code  # Asigna el código al carácter en la tabla de códigos
         else:
-            stack.append((node.left, code + "0"))
-            stack.append((node.right, code + "1"))
+            stack.append((node.left, code + "0"))  # Agrega el nodo izquierdo al stack con el código actualizado
+            stack.append((node.right, code + "1"))  # Agrega el nodo derecho al stack con el código actualizado
 
-    return codes
+    return codes  # Devuelve la tabla de códigos
+
 
 def huffman_compress(text):
     freq_dict = build_frequency_table(text)

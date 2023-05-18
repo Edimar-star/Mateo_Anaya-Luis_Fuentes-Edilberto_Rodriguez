@@ -1,6 +1,5 @@
-from mpi4py import MPI
-from collections import Counter
 from huffman import HuffmanNode
+from mpi4py import MPI
 import numpy as np
 import time
 import sys
@@ -8,8 +7,14 @@ import math
 import heapq
 
 def build_frequency_table(text):
-	freq_dict = Counter(text)
-	return freq_dict
+    # Construye una tabla de frecuencias a partir del texto dado
+    freq_dict = {}
+    for char in text:
+        if char in freq_dict:
+            freq_dict[char] += 1
+        else:
+            freq_dict[char] = 1
+    return freq_dict
 
 def build_huffman_tree(freq_dict):
     heap = []
