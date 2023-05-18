@@ -46,25 +46,25 @@ Unzip the file
 Check if both files are the same
 
 ```bash
-  python verificador.py LaBiblia.txt comprimido.elmejorprofesor 
+  python verificador.py LaBiblia.txt descomprimido-elmejorprofesor.txt 
 ```
 parallel mode, Compress the file
 
 ```bash
-  mpiexec --oversubscribe -n 4 compressorp.py LaBiblia.txt
+  mpiexec -n 4 -oversubscribe --allow-run-as-root compressorp.py LaBiblia.txt
 ```
 
 
 Unzip the file
 
 ```bash
-    mpiexec --oversubscribe -n 4 descompressorp.py comrprimido.elmejorprofesor
+    mpiexec -n 4 -oversubscribe --allow-run-as-root descompressorp.py comrprimido.elmejorprofesor
 ```
 
 Check if both files are the same
 
 ```bash
-  python verificador.py LaBiblia.txt comprimido.elmejorprofesor 
+  python verificador.py LaBiblia.txt descomprimidop-elmejorprofesor.txt 
 ```
 ## Tech Stack
 
