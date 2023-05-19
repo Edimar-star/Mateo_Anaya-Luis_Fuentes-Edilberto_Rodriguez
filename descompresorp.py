@@ -36,7 +36,7 @@ def huffman_decompress(encoded_array, root):
     return decoded_text
 
 def divide_encode_string(cadena, root):
-    if len(cadena) <= 500:
+    if len(cadena) <= 4700:
         return find_error(cadena, root)
 
     mitad = len(cadena) // 2
